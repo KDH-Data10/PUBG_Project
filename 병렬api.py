@@ -80,4 +80,12 @@ if __name__ == "__main__":
     
     final_result = pd.concat(final_dfs)
     final_result.to_csv(OUTPUT_FILE, index=False, encoding='utf-8-sig')
+
     print(f"최종 수집 완료: {OUTPUT_FILE}")
+
+    # temp worker 파일 삭제
+    for i in range(num_keys):
+        temp_file = f"temp_worker_{i}.csv"
+        if os.path.exists(temp_file):
+            os.remove(temp_file)
+            print(f"{temp_file} 삭제 완료")
